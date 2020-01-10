@@ -1,2 +1,1 @@
-# webpack-vue-demo
-从0到1在vue2.x中配置webpack4.x的demo
+### webpack4.0 + vue2.0 version-1
