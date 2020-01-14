@@ -1,6 +1,6 @@
 <template>
   <div class="child-container">
-    <img src="../assets/logo.jpg" alt="" />
+    <img class="avatar" src="../assets/logo.jpg" alt="" />
     {{ title }}
   </div>
 </template>
@@ -30,6 +30,6 @@ export default {
 };
 </script>
 
-<style scoped>
-  @import "../styles/child.css";
+<style scoped lang="scss">
+  @import "../styles/child.scss";
 </style>

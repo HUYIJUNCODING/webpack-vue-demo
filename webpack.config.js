@@ -1,4 +1,4 @@
-const path = require("path"); //node.js 里面的path模块,这里用来解析路径
+const path = require("path"); //node.js 里面的path模块,这里用来解析绝对路径的
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin"); //自动生成html
 const VueLoaderPlugin = require("vue-loader/lib/plugin"); //必须导入此插件,它负责克隆您定义的任何其他规则，并将它们应用于.vue文件中的相应语言块
@@ -21,10 +21,10 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.css$/,
+        test: /\.css$/,//指定应用当前loader的类型文件，这里就是所有.css后缀的文件都应用css-loader来处理
         use: [
           {
-            loader: MiniCssExtractPlugin.loader //一般生产环境用,因此可以使用环境变量进行区分 ,开发环境用vue-style-loader ,生产环境用 MiniCssExtractPlugin.loader
+            loader: MiniCssExtractPlugin.loader //分离css
           },
           "css-loader"
         ]
@@ -44,8 +44,9 @@ module.exports = {
         use: {
           loader: "url-loader",
           options: {
-            limit: 1000 * 1024, //限制图片资源大小,小于10kb的图片会以 base64 编码输出,大于的会以拷贝方式(file-loader发挥作用)放到 'outputPath'指定目录下
-            outputPath: "imgs/" //指定图片资源输入路径,不指定默认直接放到dist目录下,此时这里是 dist/imgs/
+            esModule: false,
+            limit: 10* 1024, //限制图片资源大小,小于10kb的图片会以 base64 编码输出,大于10kb的会以拷贝方式(file-loader)放到 'outputPath'指定目录下
+            outputPath: "imgs/" //指定图片资源输出路径,不指定默认直接放到dist目录下,此时这里是 dist/imgs/
           }
         }
       },
