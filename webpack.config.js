@@ -44,7 +44,8 @@ module.exports = {
         use: {
           loader: "url-loader",
           options: {
-            limit: 1000 * 1024, //限制图片资源大小,小于10kb的图片会以 base64 编码输出,大于的会以拷贝方式(file-loader发挥作用)放到 'outputPath'指定目录下
+            esModule: false,
+            limit: 10 * 1024, //限制图片资源大小,小于10kb的图片会以 base64 编码输出,大于的会以拷贝方式(file-loader发挥作用)放到 'outputPath'指定目录下
             outputPath: "imgs/" //指定图片资源输入路径,不指定默认直接放到dist目录下,此时这里是 dist/imgs/
           }
         }
@@ -55,15 +56,16 @@ module.exports = {
         exclude: /node_modules/ //不查找 'node_modules'目录
       },
       {
-        test: /\.vue$/,
+        test: /\.vue$/, 
         use: "vue-loader"
       }
     ]
   },
   devServer: {
+    host: 'localhost',//开发服务器监听的主机地址
+    port: 8000, //开发服务器监听的端口号，默认是 8080
     compress: true, //启用压缩
-    port: 8000, //端口
-    open: false //自动打开浏览器
+    
   },
   plugins: [
     new VueLoaderPlugin(),
@@ -76,7 +78,9 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: "styles/[name].[hash].css",
     }),
-    new ProgressBarPlugin()
+    // new ProgressBarPlugin()
   ],
-  devtool: "source-map" //为了在浏览器端调试方便,因为可以直接看源码
+  devtool: "source-map" //可以直接在浏览器控制台source下查看项目未打包的源代码，在出现一些错误的时候，
+  //如果不使用source-map的时候，错误无法定位到源代码中。
+  //使用了source-map以后，可以直接定位到错误出现的行
 };
