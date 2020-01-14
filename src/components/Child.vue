@@ -1,7 +1,6 @@
 <template>
   <div class="child-container">
     <img class="avatar" :src="avatar" alt="" />
-    <!-- <img class="avatar" src="../assets/logo.jpg" alt="" /> -->
     {{ title }}
   </div>
 </template>
@@ -29,12 +28,6 @@ export default {
         resolve(true);
       }, 1000);
     });
-
-    // let img = new Image();
-
-    // img.src = Avatar;
-
-    // document.body.appendChild(img);
   }
 };
 </script>
