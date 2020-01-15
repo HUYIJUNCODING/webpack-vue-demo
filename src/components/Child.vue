@@ -12,7 +12,7 @@ export default {
   components: {},
   data() {
     return {
-      title: "一起学习 vue2.0 中配置 webapck4.0 嘿嘿嘿"
+      title: "一起学习 vue2.0 中配置 webapck4.0 嘿嘿嘿188"
     };
   },
   methods: {},
