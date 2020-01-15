@@ -1,16 +1,16 @@
 const path = require("path");
-const merge = require("webpack-merge");
-const base = require("./webpack.base.conf");
+const merge = require("webpack-merge");//合并配置项的方法
+const base = require("./webpack.base.conf");//基础配置项
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin"); //自动生成html
-const FriendlyErrorsPlugin = require("friendly-errors-webpack-plugin");
+const FriendlyErrorsPlugin = require("friendly-errors-webpack-plugin"); //可以识别某些类的webpack错误，并清除，汇总并确定优先级。
 
 const devWebpackConfig = merge(base, {
-  mode: "development",
+  mode: "development",//模式
   devtool: "source-map",
   devServer: {
     host: "localhost", //用于配置 DevServer 服务监听的地址,想要局域网中的其它设备访问你本地的服务,请配置为 0.0.0.0,默认只有本地可以访问
-    port: 8000, //访问端口号,默认8000,如果被占用,会自动更换
+    port: 8000, //访问端口号,默认8080,如果被占用,会自动更换
     quiet: true, // necessary for FriendlyErrorsPlugin
     compress: true, //启用压缩
     open: false //自动打开浏览器

@@ -69,8 +69,7 @@ module.exports = {
     new CopyPlugin([
       {
         from: path.resolve(__dirname, "../src/static"),
-        to: "static",
-        ignore: [".*"]
+        to: "static"
       }
     ])
   ]

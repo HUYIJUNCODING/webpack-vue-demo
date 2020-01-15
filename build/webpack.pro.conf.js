@@ -1,16 +1,16 @@
 const path = require("path");
 const merge = require("webpack-merge"); //合并webpack options
-const base = require("./webpack.base.conf");
+const base = require("./webpack.base.conf"); //基础配置项
 const HtmlWebpackPlugin = require("html-webpack-plugin"); //自动生成html
 const TerserPlugin = require("terser-webpack-plugin"); //压缩js
 const OptimizeCSSPlugin = require("optimize-css-assets-webpack-plugin");//压缩css
 const { CleanWebpackPlugin } = require("clean-webpack-plugin"); //每次打包前,先清理掉之前的打包文件
 
 module.exports = merge(base, {
-  mode: "production",
+  mode: "production", //模式
   optimization: {
-    minimize: true,
-    minimizer: [new TerserPlugin()],
+    minimize: true,//告知 webpack 使用 TerserPlugin 压缩 打包后的js文件
+    minimizer: [new TerserPlugin()], //允许通过提供一个或多个定制过的 TerserPlugin 实例，覆盖默认压缩工具(minimizer)。
   },
   plugins: [
     new HtmlWebpackPlugin({
